@@ -40,7 +40,6 @@ int main(void)
 
     volatile int i;
 
-    /* Never exit as there is no OS to exit to! */
     while(1)
     {
         for(i = 0; i < 500000; i++);
