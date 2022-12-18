@@ -1,7 +1,7 @@
 /**
  * @file led-bink.c
  * @device RaspberryPI zero W 1.1v
- * @CPU BMC2835
+ * @chip BMC2835
  * @buildin-led-gpio 47
  * @author EmbeddedCat
  *
