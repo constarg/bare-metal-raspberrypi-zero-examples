@@ -1,36 +1,43 @@
 /**
+ * @file led-bink.c
+ * @device RaspberryPI zero W 1.1v
+ * @CPU BMC2838
+ * @author EmbeddedCat
+ *
  * RaspberryPI zero - builtin led blink
  * example.
- *
- * @Author EmbeddedCat
  */
+
+// For better reading
+// reg32 type represent a register of 32 - bits.
+typedef unsigned int reg32;
 
 // base address for the GPIO.
 #define GPIO_BASE       0x20200000UL
 
 // The address for the select function register.
-#define GPIO_FSEL4_REG (GPIO_BASE + (sizeof(int) * 0x4))
+#define GPIO_FSEL4_REG (GPIO_BASE + (sizeof(reg32) * 0x4))
 // The address for the set register.
-#define GPIO_SET1_REG  (GPIO_BASE + (sizeof(int) * 0x8))
+#define GPIO_SET1_REG  (GPIO_BASE + (sizeof(reg32) * 0x8))
 // The address for the clear register.
-#define GPIO_CLR1_REG  (GPIO_BASE + (sizeof(int) * 0xB))
+#define GPIO_CLR1_REG  (GPIO_BASE + (sizeof(reg32) * 0xB))
 
-#define LED_SEL (1 << 0x15) // Set led to output mode.
-#define LED_OP  (1 << 0xF) // The bit that must be "on" to turn off or on the led.
+#define LED_SEL (1 << 0x15) // Set led to output mode. 
+#define LED_OP  (1 << 0xF) // The bit that must be "on" to turn off or on the led. 
 
 
 #define INIT_LED()                          \
-    *((volatile unsigned int *)             \
+    *((volatile reg32 *)                    \
             GPIO_FSEL4_REG) &= ~LED_SEL;    \
-    *((volatile unsigned int *)             \
+    *((volatile reg32 *)                    \
             GPIO_FSEL4_REG) |= LED_SEL    
 
 #define TURN_LED_ON()                       \
-    *((volatile unsigned int *)             \
+    *((volatile reg32 *)                    \
             GPIO_CLR1_REG) = LED_OP
 
 #define TURN_LED_OFF()                      \
-    *((volatile unsigned int *)             \
+    *((volatile reg32 *)                    \
             GPIO_SET1_REG) = LED_OP 
 
 
