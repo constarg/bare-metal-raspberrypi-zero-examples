@@ -2,6 +2,7 @@
  * @file led-bink.c
  * @device RaspberryPI zero W 1.1v
  * @CPU BMC2835
+ * @buildin-led-gpio 47
  * @author EmbeddedCat
  *
  * RaspberryPI zero - builtin led blink
@@ -26,16 +27,25 @@ typedef unsigned int reg32;
 #define LED_OP  (1U << 0xFU) // The bit that must be "on" to turn off or on the led. 
 
 
+/**
+ * Set GPIO47 as output.
+ */
 #define INIT_LED()                          \
     *((volatile reg32 *)                    \
             GPIO_FSEL4_REG) &= ~LED_SEL;    \
     *((volatile reg32 *)                    \
             GPIO_FSEL4_REG) |= LED_SEL    
 
+/**
+ * Turn on the led on GPIO47
+ */
 #define TURN_LED_ON()                       \
     *((volatile reg32 *)                    \
             GPIO_CLR1_REG) = LED_OP
 
+/**
+ * Turn off the led of GPIO47
+ */
 #define TURN_LED_OFF()                      \
     *((volatile reg32 *)                    \
             GPIO_SET1_REG) = LED_OP 
