@@ -1,7 +1,7 @@
 /**
  * @file led-bink.c
  * @device RaspberryPI zero W 1.1v
- * @CPU BMC2838
+ * @CPU BMC2835
  * @author EmbeddedCat
  *
  * RaspberryPI zero - builtin led blink
@@ -13,17 +13,17 @@
 typedef unsigned int reg32;
 
 // base address for the GPIO.
-#define GPIO_BASE       0x20200000UL
+#define GPIO_BASE 0x20200000UL
 
 // The address for the select function register.
-#define GPIO_FSEL4_REG (GPIO_BASE + (sizeof(reg32) * 0x4))
+#define GPIO_FSEL4_REG (GPIO_BASE + (sizeof(reg32) * 0x4U))
 // The address for the set register.
-#define GPIO_SET1_REG  (GPIO_BASE + (sizeof(reg32) * 0x8))
+#define GPIO_SET1_REG  (GPIO_BASE + (sizeof(reg32) * 0x8U))
 // The address for the clear register.
-#define GPIO_CLR1_REG  (GPIO_BASE + (sizeof(reg32) * 0xB))
+#define GPIO_CLR1_REG  (GPIO_BASE + (sizeof(reg32) * 0xBU))
 
-#define LED_SEL (1 << 0x15) // Set led to output mode. 
-#define LED_OP  (1 << 0xF) // The bit that must be "on" to turn off or on the led. 
+#define LED_SEL (1U << 0x15U) // Set led to output mode. 
+#define LED_OP  (1U << 0xFU) // The bit that must be "on" to turn off or on the led. 
 
 
 #define INIT_LED()                          \
