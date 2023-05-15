@@ -13,7 +13,7 @@ sudo apt-get install build-essential binutils-arm-none-eabi gcc-arm-none-eabi
 First download the program from GitHub and go to the bare-metal-raspberrypi-zero-examples folder.
 
 ```
-% git clone https://github.com/EmbeddedCat/bare-metal-raspberrypi-zero-examples.git
+% git clone https://github.com/constarg/bare-metal-raspberrypi-zero-examples.git
 % cd bare-metal-raspberrypi-zero-examples/
 ```
 
