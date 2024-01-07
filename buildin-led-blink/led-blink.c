@@ -3,7 +3,7 @@
  * @device RaspberryPI zero W 1.1v
  * @chip BMC2835
  * @buildin-led-gpio 47
- * @author EmbeddedCat
+ * @author constarg
  *
  * RaspberryPI zero - builtin led blink
  * example.
